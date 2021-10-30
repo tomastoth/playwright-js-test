@@ -1,13 +1,13 @@
 const { chromium } = require('playwright')
 const fs = require('fs')
 const products = []
-
+const url = 'https://webscraper.io/test-sites/e-commerce/allinone';
 ;(async () => {
   console.log('Starting scraping')
   const browser = await chromium.launch()
   // Create pages, interact with UI elements, assert values
   const page = await browser.newPage()
-  await page.goto('https://webscraper.io/test-sites/e-commerce/allinone')
+  await page.goto(url)
   category_links = await page.$$eval('.category-link', (categories) =>
     categories.map((category) => category.href),
   )
